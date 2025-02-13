@@ -130,19 +130,10 @@ public class AppleAuthenticationAndroidModule extends ReactContextBaseJavaModule
 
         if (nonceEnabled) {
             if (configObject.hasKey("nonce")) {
-                nonce = rawNonce = configObject.getString("nonce");
+                nonce = configObject.getString("nonce");
             } else {
                 // If no nonce is provided, generate one
-                nonce = rawNonce = UUID.randomUUID().toString();
-            }
-
-            // SHA256 of the nonce to keep in line with the iOS library (and avoid confusion)
-            try {
-                MessageDigest md = MessageDigest.getInstance("SHA-256");
-                md.update(nonce.getBytes());
-                byte[] digest = md.digest();
-                nonce = bytesToHex(digest);
-            } catch (Exception e) {
+                nonce = UUID.randomUUID().toString();
             }
         }
 
@@ -152,7 +143,7 @@ public class AppleAuthenticationAndroidModule extends ReactContextBaseJavaModule
             .responseType(SignInWithAppleConfiguration.ResponseType.ALL)
             .scope(SignInWithAppleConfiguration.Scope.ALL)
             .state(state)
-            .rawNonce(rawNonce)
+            .rawNonce(nonce)
             .nonce(nonce)
             .build();
     }

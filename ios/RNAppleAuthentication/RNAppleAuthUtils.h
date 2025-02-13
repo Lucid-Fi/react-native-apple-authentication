@@ -26,8 +26,6 @@
 
 + (NSString *)randomNonce:(NSInteger)length;
 
-+ (NSString *)stringBySha256HashingString:(NSString *)input;
-
 @end
 
 #endif

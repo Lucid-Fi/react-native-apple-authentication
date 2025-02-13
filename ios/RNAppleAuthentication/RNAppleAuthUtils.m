@@ -56,16 +56,4 @@
   return result;
 }
 
-+ (NSString *)stringBySha256HashingString:(NSString *)input {
-  const char *string = [input UTF8String];
-  unsigned char result[CC_SHA256_DIGEST_LENGTH];
-  CC_SHA256(string, (CC_LONG) strlen(string), result);
-
-  NSMutableString *hashed = [NSMutableString stringWithCapacity:CC_SHA256_DIGEST_LENGTH * 2];
-  for (NSInteger i = 0; i < CC_SHA256_DIGEST_LENGTH; i++) {
-    [hashed appendFormat:@"%02x", result[i]];
-  }
-  return hashed;
-}
-
 @end
