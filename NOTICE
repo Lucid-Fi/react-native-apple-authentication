@@ -1,0 +1,6 @@
+Lucid Finance
+Copyright 2024 Lucid Finance
+Contains modified software from:
+  - Project: @invertase/react-native-apple-authentication
+  - Copyright: 2016-present Invertase Limited
+  - Modifications: Removed SHA256 hashing of nonce values in iOS and Android before sending to Apple
